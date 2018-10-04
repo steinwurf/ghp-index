@@ -10,8 +10,9 @@ import logging
 @click.command()
 @click.option('--outpath')
 @click.option('--docspath')
+@click.option('--project_name')
 @click.option('-v', '--verbose', is_flag=True)
-def cli(outpath, docspath, verbose):
+def cli(outpath, docspath, project_name, verbose):
 
     log = logging.getLogger('ghp_index')
 
@@ -50,6 +51,7 @@ def cli(outpath, docspath, verbose):
 
     data = {}
     data['versions'] = versions
+    data['project_name'] = project_name
 
     print(versions)
 
