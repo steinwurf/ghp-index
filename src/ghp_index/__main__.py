@@ -11,8 +11,9 @@ import logging
 @click.option('--outpath')
 @click.option('--docspath')
 @click.option('--project_name')
+@click.option('--github_url')
 @click.option('-v', '--verbose', is_flag=True)
-def cli(outpath, docspath, project_name, verbose):
+def cli(outpath, docspath, project_name, verbose, github_url):
 
     log = logging.getLogger('ghp_index')
 
@@ -50,8 +51,9 @@ def cli(outpath, docspath, project_name, verbose):
             versions.append((name, path))
 
     data = {}
-    data['versions'] = versions
+    data['versions'] = sorted(versions)
     data['project_name'] = project_name
+    data['github_url'] = github_url
 
     print(versions)
 
